@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NAME</title>
+
+        <style>
+            hr.new{
+                border-top: 1px dotted black;
+                align-items: center;
+                border: width 90%;
+            }
+            #myBtn:hover {
+                background-color: #555;
+            }
+          
+        </style>
+        <script>
+            let mybutton = document.getElementById("myBtn");
+            window.onscroll = function() {scrollFunction()};
+            function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                 mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+            }
+            function topFunction() {
+                document.body.scrollTop = 0; 
+                document.documentElement.scrollTop = 0; 
+            }
+        </script>
+    </head>
+    <body>
+        <div id="head">
+            logo:<img/>
+            <h1>NAME</h1>
+            <button>About</button>
+            <button>Admission</button>
+            <button>Portfolio</button>
+            <button>contact us</button>
+        </div>
+        <div id="upbody"></div>
+        <div id="middlebody"></div>
+        <div id="end body"></div>
+        <div id="foot">
+            <h1>NAME</h1>
+            <a href="">Contact Information</a>
+            <a href="">Privacy Statement</a>
+            <hr id="new">
+            &copy;20xx NAME.All Rights Reserved.
+            <button onclick="topFunction()" id="myBtn" title="Go to top">&uarr;</button>
+        </div>
+    </body>
+</html>
