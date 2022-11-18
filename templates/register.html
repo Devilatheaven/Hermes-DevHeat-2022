@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Registration page</title>
+    </head>
+    <body>
+        <h1>CREATE ACCOUNT</h1>
+        <form>
+            <form action="register" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Enter your name">
+                <br>
+                <input type="email" name="email" placeholder="Enter your email">
+                <br>
+                <input type="password" name="password" placeholder="Enter your password">
+                <br>
+                <input type="password" name="password2" placeholder="Enter your password">
+                <br>
+                <input type="text" name="number" placeholder="Enter your mobile number">
+                <input type="submit">
+            </form>
+            </div>
+            <p>Have an account already <a href="link.com">login here</p>
+
+        </form>
+    </body>
+</html>
