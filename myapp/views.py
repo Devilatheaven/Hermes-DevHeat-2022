@@ -6,21 +6,19 @@ from django.http import HttpResponse
 # Create your views here.
 
 global user_logged
-user_logged = 1
+user_logged = 0
 
 def index(request):
     global user_logged
     user_logged = 0
-    print("User logged = ",user_logged)
     return render(request,'index.html')
 
 def user(request):
     global user_logged
-    print(user_logged)
     if user_logged == 1:
         return render(request,'user.html')
     else:
-        return render(request,'index.html')
+        return render(request,'login.html')
     
 def login(request):
     global user_logged
@@ -43,7 +41,6 @@ def login(request):
 def logout(request):
     global user_logged
     user_logged = 0
-    print(user_logged)
     auth.logout(request)
     return redirect('home.html')
 
@@ -68,12 +65,12 @@ def register(request):
         messages.info(request,"passwords are not matched!")
         return render(request,'register.html')
 
-def logout(request):
-    auth.logout(request)
-    return redirect('/')
+def about(request):
+    return render(request,'about.html')
 
-def contactus(request):
-    return redirect(request,'contactus.html')
+def contact(request):
+    return render(request,'contact.html')
 
-def aboutus(request):
-    return redirect(request,'aboutus.html')
+def tregister(request):
+    
+    return render(request,'tregister.html')
