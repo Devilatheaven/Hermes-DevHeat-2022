@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home page</title>
+    <title>Teacher Register</title>
     <link rel="stylesheet" href="{% static 'teacher.css' %}">
     <link rel="stylesheet" href="teacher.js">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -43,6 +43,7 @@
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
             <form action="teacher_registor" method="post">
+                {% csrf_token %}
                 <div class="row">
 
                     <!-- First Name -->
@@ -52,7 +53,7 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="firstName" type="text" name="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
+                        <input id="firstName" type="text" name="tname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
                     </div>
 
                     <!-- Last Name -->
