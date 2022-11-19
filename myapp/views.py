@@ -1,35 +1,35 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from .models import user_details
+from .models import student_details
 from django.http import HttpResponse
 # Create your views here.
 
-global user_logged
-user_logged = 0
+global student_logged
+student_logged = 0
 
 def index(request):
-    global user_logged
-    user_logged = 0
+    global student_logged
+    student_logged = 0
     return render(request,'index.html')
 
 def user(request):
-    global user_logged
-    if user_logged == 1:
+    global student_logged
+    if student_logged == 1:
         return render(request,'user.html')
     else:
         return render(request,'login.html')
     
 def login(request):
-    global user_logged
-    user_logged = 0
+    global student_logged
+    student_logged = 0
     if request.method == 'POST':
         username= request.POST['username']
         password = request.POST['password']
-        user = auth.authenticate(request, username=username, password=password)
-        if user is not None :
+        student = auth.authenticate(request, username=username, password=password)
+        if student is not None :
             auth.login(request,user)
-            user_logged = 1
+            student_logged = 1
             return redirect('user')
         else:
             messages.info(request,"Login Credentials are not matched")
@@ -39,8 +39,8 @@ def login(request):
 
 
 def logout(request):
-    global user_logged
-    user_logged = 0
+    global student_logged
+    student_logged = 0
     auth.logout(request)
     return redirect('home.html')
 
@@ -52,14 +52,14 @@ def register(request):
         password = request.POST['password']
         password2 = request.POST['password2']
         if password == password2:
-            if User.objects.filter(username = username).exists():
-                messages.info(request,'User name is already in use!')
+            if User.objects.filter(email = email).exists():
+                messages.info(request,'email id is already in use!')
                 return redirect('register')
             else:
-                user = User.objects.create_user(username=username, password= password)
-                user_data = user_details.objects.create(username = username , passwordtodb = password, emailid = email, number = number)
-                user_data.save()
-                user.save()
+                student = User.objects.create_user(username=username, password= password)
+                student_data = student_details.objects.create(username = username , passwordtodb = password, emailid = email, number = number)
+                student_data.save()
+                student.save()
                 return redirect('login')
     else:
         messages.info(request,"passwords are not matched!")
@@ -72,5 +72,12 @@ def contact(request):
     return render(request,'contact.html')
 
 def tregister(request):
-    
-    return render(request,'tregister.html')
+    if method == "POST":
+        tfirstname = request.POST['tfirstname']
+        tlastname = request.POST['tlastname']
+        temail = request.POST['email']
+        tnumber = request.POST['phone']
+        tpassword = request.POST['password']
+        tpassword2 = request.POST['password2']
+    else:
+        return render(request,'tregister.html')
