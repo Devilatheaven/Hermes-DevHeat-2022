@@ -61,7 +61,6 @@ def login(request):
     else:
         return render(request,'login.html')
 
-
 def logout(request):
     global student_logged
     student_logged = 0
@@ -98,6 +97,13 @@ def contact(request):
 def material(request):
     return render(request,'study_materials.html')
 
+def teacher_portal(request):
+    global teacher_logged
+    if teacher_logged == 1:
+        return render(request,'teacher_portal.html')
+    else:
+        return render(request,'tlogin.html')
+
 def tregister(request):
     if request.method == "POST":
         tfirstname = request.POST['tfirstname']
@@ -131,11 +137,17 @@ def tlogin(request):
         if teacher is not None  :
             print("Logged In Successfully.......")
             teacher_logged = 1
-            return redirect('home')
+            return redirect('teacher_portal')
         else:
             print("else1 not matched")
             messages.info(request,"Login Credentials are not matched")
             return redirect('tlogin')
     else:
         print("final else ")
-        return render(request,'tlogin.html')        
+        return render(request,'tlogin.html')   
+
+def tlogout(request):
+    global teacher_logged
+    teacher_logged = 0
+    auth.logout(request)
+    return redirect('index')

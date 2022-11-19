@@ -15,5 +15,7 @@ urlpatterns = [
     path('tlogin',views.tlogin,name='tlogin'),
     path('student_quiz',views.student_quiz,name='student_quiz'),
     path('quiz_questions',views.quiz_questions,name='quiz_questions'),
-    path('student_doubt',views.student_doubt,name='student_doubt')
+    path('student_doubt',views.student_doubt,name='student_doubt'),
+    path('teacher_portal',views.teacher_portal,name='teacher_portal'),
+    path('tlogout',views.tlogout,name='tlogout')
 ]
