@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from .models import student_details,teacher_details
+from .models import student_details,teacher_details,doubts
 from django.http import HttpResponse
 # Create your views here.
 
@@ -28,6 +28,12 @@ def user(request):
     else:
         return render(request,'login.html')
     
+def student_quiz(request):
+    return render(request,'student.quiz.html')
+
+def quiz_questions(request):
+    return render(request,'student_quiz1.html')
+
 def login(request):
     global student_logged
     student_logged = 0

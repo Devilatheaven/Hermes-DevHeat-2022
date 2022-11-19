@@ -14,4 +14,8 @@ class teacher_details(models.Model):
     temail = models.CharField(max_length=100)
     tphone = models.CharField(max_length=100)
     tpassword = models.CharField(max_length=100)
+
+class doubts(models.Model):
+    question = models.CharField(max_length=1000)
+    answer = models.CharField(max_length=10000)
     
