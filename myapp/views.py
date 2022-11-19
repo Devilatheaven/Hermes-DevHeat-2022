@@ -12,7 +12,7 @@ teacher_logged = 0
 def index(request):
     global student_logged
     student_logged = 0
-    return render(request,'index.html')
+    return render(request,'home.html')
     
 def home(request):
     global teacher_logged
@@ -24,7 +24,7 @@ def home(request):
 def user(request):
     global student_logged
     if student_logged == 1:
-        return render(request,'user.html')
+        return render(request,'student_home.html')
     else:
         return render(request,'login.html')
     
