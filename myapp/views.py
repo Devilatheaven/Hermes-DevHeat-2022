@@ -34,9 +34,8 @@ def login(request):
     if request.method == 'POST':
         email= request.POST['email']
         password = request.POST['password']
-        student = auth.authenticate(request, username=email, password=password)
-        if student is not None :
-            auth.login(request,student)
+        student = list(student_details.objects.filter(passwordtodb = password))
+        if student is not None or len(student)>0:
             student_logged = 1
             return redirect('user')
         else:
