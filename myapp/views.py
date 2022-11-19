@@ -67,7 +67,7 @@ def register(request):
                 student_data = student_details.objects.create(username = username , passwordtodb = password, emailid = email, number = number)
                 student_data.save()
                 student.save()
-                return redirect('tlogin')
+                return redirect('login')
     else:
         messages.info(request,"passwords are not matched!")
         return render(request,'register.html')
