@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
+from .models import user_details
 from django.http import HttpResponse
 # Create your views here.
 
@@ -24,6 +25,11 @@ def login(request):
     else:
         return render(request,'login.html')
 
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home.html')
+
 def register(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -37,6 +43,8 @@ def register(request):
                 return redirect('register')
             else:
                 user = User.objects.create_user(username=username, password= password)
+                user_data = user_details.objects.create(username = username , passwordtodb = password, emailid = email, number = number)
+                user_data.save();
                 user.save();
                 return redirect('login')
     else:

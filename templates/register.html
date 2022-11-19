@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
 
 <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-<link rel="stylesheet" href="registration.css">
+<link rel="stylesheet" href="{% static 'register.css' %}">
 <meta name="robots" content="noindex, follow">
 </head>
 <body>
@@ -16,7 +17,8 @@
 <section class="signup">
 <div class="container">
 <div class="signup-content">
-<form method="POST" id="signup-form" class="signup-form">
+<form method="POST" id="signup-form" class="signup-form" action="register">
+  {% csrf_token %}
 <h2 class="form-title">Create account</h2>
 <div class="form-group">
 <input type="text" class="form-input" name="name" id="name" placeholder="Your Name" />
@@ -29,7 +31,10 @@
 <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
 </div>
 <div class="form-group">
-<input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password" />
+<input type="text" class="form-input" name="number" placeholder="Your Number">
+</div>
+<div class="form-group">
+<input type="password" class="form-input" name="password2" id="re_password" placeholder="Repeat your password" />
 </div>
 <div class="form-group">
 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
@@ -40,7 +45,7 @@
 </div>
 </form>
 <p class="loginhere">
-Have already an account ? <a href="#" class="loginhere-link">Login here</a>
+Have already an account ? <a href="login" class="loginhere-link">Login here</a>
 </p>
 </div>
 </div>
