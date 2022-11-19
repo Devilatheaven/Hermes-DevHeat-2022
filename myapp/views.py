@@ -67,7 +67,7 @@ def register(request):
                 student_data = student_details.objects.create(username = username , passwordtodb = password, emailid = email, number = number)
                 student_data.save()
                 student.save()
-                return redirect('login')
+                return redirect('tlogin')
     else:
         messages.info(request,"passwords are not matched!")
         return render(request,'register.html')
@@ -107,14 +107,15 @@ def tlogin(request):
     if request.method == 'POST':
         email= request.POST['email']
         password = request.POST['password']
-        teacher_data = teacher_details.objects.filter(email = email)
-        teacher = auth.authenticate(request, email=email, password=password)
-        if teacher is not None :
-            auth.login(request,user)
+        teacher = list(teacher_details.objects.filter(tpassword=password, temail=email).values())
+        if teacher is not None  :
+            print("Logged In Successfully.......")
             teacher_logged = 1
             return redirect('home')
         else:
+            print("else1 not matched")
             messages.info(request,"Login Credentials are not matched")
             return redirect('tlogin')
     else:
+        print("final else ")
         return render(request,'tlogin.html')        
