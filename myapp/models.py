@@ -18,4 +18,6 @@ class teacher_details(models.Model):
 class doubts(models.Model):
     question = models.CharField(max_length=1000)
     answer = models.CharField(max_length=10000)
+    username = models.CharField(max_length=100)
+    email = models.CharField(max_length=50)
     

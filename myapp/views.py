@@ -32,7 +32,16 @@ def student_quiz(request):
     return render(request,'student_quiz.html')
 
 def student_doubt(request):
-    return render(request,'student_doubt.html')
+    if request.method == "POST":
+        username = request.POST['name']
+        email = request.POST['email']
+        question = request.POST['question']
+        question_created = doubts.objects.create(username = username, email=email, question = question, answer="null")
+        question_created.save()
+        return redirect('user')
+    else:
+        return render(request,'student_doubt.html')
+
 def quiz_questions(request):
     return render(request,'student_quiz1.html')
 
