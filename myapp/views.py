@@ -5,19 +5,33 @@ from .models import user_details
 from django.http import HttpResponse
 # Create your views here.
 
+global user_logged
+user_logged = 1
+
 def index(request):
+    global user_logged
+    user_logged = 0
+    print("User logged = ",user_logged)
     return render(request,'index.html')
 
 def user(request):
-    return render(request,'user.html')
+    global user_logged
+    print(user_logged)
+    if user_logged == 1:
+        return render(request,'user.html')
+    else:
+        return render(request,'index.html')
     
 def login(request):
+    global user_logged
+    user_logged = 0
     if request.method == 'POST':
         username= request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(request, username=username, password=password)
         if user is not None :
             auth.login(request,user)
+            user_logged = 1
             return redirect('user')
         else:
             messages.info(request,"Login Credentials are not matched")
@@ -27,6 +41,9 @@ def login(request):
 
 
 def logout(request):
+    global user_logged
+    user_logged = 0
+    print(user_logged)
     auth.logout(request)
     return redirect('home.html')
 
@@ -44,8 +61,8 @@ def register(request):
             else:
                 user = User.objects.create_user(username=username, password= password)
                 user_data = user_details.objects.create(username = username , passwordtodb = password, emailid = email, number = number)
-                user_data.save();
-                user.save();
+                user_data.save()
+                user.save()
                 return redirect('login')
     else:
         messages.info(request,"passwords are not matched!")
