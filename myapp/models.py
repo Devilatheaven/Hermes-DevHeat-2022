@@ -9,8 +9,8 @@ class student_details(models.Model):
     emailid = models.CharField(max_length=50)
 
 class teacher_details(models.Model):
-    tfirstName = models.CharField(max_length=100)
-    tlastName = models.CharField(max_length=100)
+    tfirstname = models.CharField(max_length=100)
+    tlastname = models.CharField(max_length=100)
     temail = models.CharField(max_length=100)
     tphone = models.CharField(max_length=100)
     tpassword = models.CharField(max_length=100)

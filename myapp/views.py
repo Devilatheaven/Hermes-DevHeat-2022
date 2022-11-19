@@ -50,7 +50,7 @@ def logout(request):
     global student_logged
     student_logged = 0
     auth.logout(request)
-    return redirect('home.html')
+    return redirect('index')
 
 def register(request):
     if request.method == "POST":
@@ -87,21 +87,15 @@ def tregister(request):
         tnumber = request.POST['phone']
         tpassword = request.POST['password']
         tpassword2 = request.POST['password2']
-        print("finished input")
         if tpassword == tpassword2:
             if teacher_details.objects.filter(temail = temail).exists():
-                print("same email found")
                 messages.info(request,'email id is already in use!')
                 return redirect('tregister')
-            else:
-                teacher = User.objects.create_user(username=temail, password= tpassword)
-                teacher_data = teacher_details.objects.create(tfirstname = tfirstname ,tlastname = tlastname, tpassword = tpassword, temail = temail, tnumber = tnumber)
+            else:   
+                teacher_data = teacher_details.objects.create(tfirstname = tfirstname ,tlastname = tlastname, tpassword = tpassword, temail = temail, tphone = tnumber)
                 teacher_data.save()
-                teacher.save()
-                print("saved")
                 return redirect('tlogin')
         else:
-            print("pass dont match")
             messages.info(request,'Passwords do not match!')
             return redirect('tregister')
     else:
@@ -114,7 +108,7 @@ def tlogin(request):
     if request.method == 'POST':
         email= request.POST['username']
         password = request.POST['password']
-        teacher = auth.authenticate(request, username=email, password=password)
+        teacher = auth.authenticate(request, email=email, password=password)
         if teacher is not None :
             auth.login(request,user)
             teacher_logged = 1
