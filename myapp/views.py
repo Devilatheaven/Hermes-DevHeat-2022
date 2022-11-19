@@ -78,6 +78,9 @@ def about(request):
 def contact(request):
     return render(request,'contact.html')
 
+def material(request):
+    return render(request,'study_materials.html')
+
 def tregister(request):
     if request.method == "POST":
         tfirstname = request.POST['tfirstname']
