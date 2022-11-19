@@ -18,3 +18,7 @@ body{
     margin-right: 5%;
     text-shadow: none;
 }
+#name{
+    text-shadow: none;
+    color: white;
+}
