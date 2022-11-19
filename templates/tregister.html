@@ -1,12 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home page</title>
-    <link rel="stylesheet" href="teacher.css">
-    <link rel="stylesheet" href="teacher.js">
+    <title>Teacher Register</title>
+    <link rel="stylesheet" href="{% static 'teacher.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.3.1.slim.min.js">
@@ -41,7 +41,8 @@
 
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-            <form action="teacher_registor" method="post">
+            <form action="tregister" method="POST">
+                {% csrf_token %}
                 <div class="row">
 
                     <!-- First Name -->
@@ -51,7 +52,7 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="firstName" type="text" name="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
+                        <input id="firstName" type="text" name="tfirstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
                     </div>
 
                     <!-- Last Name -->
@@ -61,7 +62,7 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="lastName" type="text" name="lastname" placeholder="Last Name" class="form-control bg-white border-left-0 border-md">
+                        <input id="lastName" type="text" name="tlastname" placeholder="Last Name" class="form-control bg-white border-left-0 border-md">
                     </div>
 
                     <!-- Email Address -->
@@ -104,14 +105,15 @@
                                 <i class="fa fa-lock text-muted"></i>
                             </span>
                         </div>
-                        <input id="passwordConfirmation" type="password" name="passwordConfirmation" placeholder="Confirm Password" class="form-control bg-white border-left-0 border-md">
+                        <input id="passwordConfirmation" type="password" name="password2" placeholder="Confirm Password" class="form-control bg-white border-left-0 border-md">
                     </div>
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0">
-                        <a href="#" class="btn btn-primary btn-block py-2">
+                        <!-- <a href="#" class="btn btn-primary btn-block py-2">
                             <span class="font-weight-bold">Create your account</span>
-                        </a>
+                        </a> -->
+                        <input type="submit" class="btn btn-primary btn-block py-2" value="Create your account">
                     </div>
 
                     <!-- Divider Text -->
@@ -125,7 +127,7 @@
 
                     <!-- Already Registered -->
                     <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already Registered? <a href="#" class="text-primary ml-2">Login</a></p>
+                        <p class="text-muted font-weight-bold">Already Registered? <a href="{% url 'tlogin' %}" class="text-primary ml-2">Login</a></p>
                     </div>
 
                 </div>

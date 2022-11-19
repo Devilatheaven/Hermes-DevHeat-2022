@@ -1,37 +1,42 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from .models import user_details
+from .models import student_details,teacher_details
 from django.http import HttpResponse
 # Create your views here.
 
-global user_logged
-user_logged = 1
+global student_logged,teacher_logged
+student_logged = 0
+teacher_logged = 0
 
 def index(request):
-    global user_logged
-    user_logged = 0
-    print("User logged = ",user_logged)
+    global student_logged
+    student_logged = 0
     return render(request,'index.html')
+    
+def home(request):
+    global teacher_logged
+    if teacher_logged == 1:
+        return render(request,'home.html')
+    else:
+        return render(request,'tlogin.html')
 
 def user(request):
-    global user_logged
-    print(user_logged)
-    if user_logged == 1:
+    global student_logged
+    if student_logged == 1:
         return render(request,'user.html')
     else:
-        return render(request,'index.html')
+        return render(request,'login.html')
     
 def login(request):
-    global user_logged
-    user_logged = 0
+    global student_logged
+    student_logged = 0
     if request.method == 'POST':
-        username= request.POST['username']
+        email= request.POST['email']
         password = request.POST['password']
-        user = auth.authenticate(request, username=username, password=password)
-        if user is not None :
-            auth.login(request,user)
-            user_logged = 1
+        student = list(student_details.objects.filter(passwordtodb = password))
+        if student is not None or len(student)>0:
+            student_logged = 1
             return redirect('user')
         else:
             messages.info(request,"Login Credentials are not matched")
@@ -41,11 +46,10 @@ def login(request):
 
 
 def logout(request):
-    global user_logged
-    user_logged = 0
-    print(user_logged)
+    global student_logged
+    student_logged = 0
     auth.logout(request)
-    return redirect('home.html')
+    return redirect('index')
 
 def register(request):
     if request.method == "POST":
@@ -55,25 +59,63 @@ def register(request):
         password = request.POST['password']
         password2 = request.POST['password2']
         if password == password2:
-            if User.objects.filter(username = username).exists():
-                messages.info(request,'User name is already in use!')
+            if User.objects.filter(email = email).exists():
+                messages.info(request,'email id is already in use!')
                 return redirect('register')
             else:
-                user = User.objects.create_user(username=username, password= password)
-                user_data = user_details.objects.create(username = username , passwordtodb = password, emailid = email, number = number)
-                user_data.save()
-                user.save()
-                return redirect('login')
+                student = User.objects.create_user(username=email, password= password)
+                student_data = student_details.objects.create(username = username , passwordtodb = password, emailid = email, number = number)
+                student_data.save()
+                student.save()
+                return redirect('tlogin')
     else:
         messages.info(request,"passwords are not matched!")
         return render(request,'register.html')
 
-def logout(request):
-    auth.logout(request)
-    return redirect('/')
+def about(request):
+    return render(request,'about.html')
 
-def contactus(request):
-    return redirect(request,'contactus.html')
+def contact(request):
+    return render(request,'contact.html')
 
-def aboutus(request):
-    return redirect(request,'aboutus.html')
+def tregister(request):
+    if request.method == "POST":
+        tfirstname = request.POST['tfirstname']
+        tlastname = request.POST['tlastname']
+        temail = request.POST['email']
+        tnumber = request.POST['phone']
+        tpassword = request.POST['password']
+        tpassword2 = request.POST['password2']
+        if tpassword == tpassword2:
+            if teacher_details.objects.filter(temail = temail).exists():
+                messages.info(request,'email id is already in use!')
+                return redirect('tregister')
+            else:   
+                teacher_data = teacher_details.objects.create(tfirstname = tfirstname ,tlastname = tlastname, tpassword = tpassword, temail = temail, tphone = tnumber)
+                teacher_data.save()
+                return redirect('tlogin')
+        else:
+            messages.info(request,'Passwords do not match!')
+            return redirect('tregister')
+    else:
+        print("else //")
+        return render(request,'tregister.html')
+
+def tlogin(request):
+    global teacher_logged
+    teacher_logged = 0
+    if request.method == 'POST':
+        email= request.POST['email']
+        password = request.POST['password']
+        teacher = list(teacher_details.objects.filter(tpassword=password, temail=email).values())
+        if teacher is not None  :
+            print("Logged In Successfully.......")
+            teacher_logged = 1
+            return redirect('home')
+        else:
+            print("else1 not matched")
+            messages.info(request,"Login Credentials are not matched")
+            return redirect('tlogin')
+    else:
+        print("final else ")
+        return render(request,'tlogin.html')        
