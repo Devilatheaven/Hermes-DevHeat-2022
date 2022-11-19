@@ -106,8 +106,9 @@ def tlogin(request):
     global teacher_logged
     teacher_logged = 0
     if request.method == 'POST':
-        email= request.POST['username']
+        email= request.POST['email']
         password = request.POST['password']
+        teacher_data = teacher_details.objects.filter(email = email)
         teacher = auth.authenticate(request, email=email, password=password)
         if teacher is not None :
             auth.login(request,user)
