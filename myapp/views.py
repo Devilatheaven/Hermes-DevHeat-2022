@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from .models import student_details, teacher_details
+from .models import student_details,teacher_details
 from django.http import HttpResponse
 # Create your views here.
 
@@ -32,11 +32,11 @@ def login(request):
     global student_logged
     student_logged = 0
     if request.method == 'POST':
-        email= request.POST['username']
+        email= request.POST['email']
         password = request.POST['password']
         student = auth.authenticate(request, username=email, password=password)
         if student is not None :
-            auth.login(request,user)
+            auth.login(request,student)
             student_logged = 1
             return redirect('user')
         else:
