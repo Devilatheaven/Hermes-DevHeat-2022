@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HOME</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="student_home.css">
+<link rel="stylesheet" href="studenthome.js">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANcAAAB5CAMAAACdtUQZAAAAkFBMVEUWPjX///8yUEgRPDIdQzonSEAAMSYALiIANSv8/Pz4+fkAKBsNOjAAKh4AJRcAGAAAIBAAAADX29rm6Ojt7+8AHQoAFQCttbMcNSvAxsScp6TL0M8AEQBmc25MYFqIko90fHeXnpt+h4NxgX0sQThEVlC4vbsACwBVamU6TUVcaWMwSEASLyQ8V1AiPjVOWlTndvmWAAALAUlEQVR4nM2dDXeiOhCG0WgIEJDyUQoUKFAp6mr//79bElAR8KOZuN33nHu6u1rMYyaTyWSSqyyR8k9EsUHn39syr0LH9fTZbKbpnhuHUZZs14qqEqntWCj/ggsR63VeBKHjzaakuXGVp5aN5TXlH3BRTA514HraJNNJuheWnwRTOR/6dC5i74tqupsmFGaphWV87HO5qPpSV+6jUFxuWL6o8E57JhdV19nPoFrp+RoT4Gc/j4vaafSw/Q3kBekrrM+exUXV3eOjaqrPqh0I7DlcyFwHAKhWG0jDnsKF7UhkXF0qBjXhCVyEJBAL7KR/gPy9fC5jE8KpZjMHFnzI5qJWCTdBplIFtUMyF5bTWY2nf4E1RC6XlcjprNksA0ZTMrmomkmimjkgJ69I5aJKJQtrFpnAxsjjIpYjDUtfQCNfaVw4lTW0GkUWtDmyuEyZWBosNpTIhbcSQoyTAvjSUg6XKiNyOsnbQldfkrjw8lEsL66irPjgKvIgnjTe2AC3SAoX2T8wtjy3yua+ZagYk05YNQ1bKSPH1S/euod3lwwuRO46eCfIUsueTFsgbK3mZRD33vwFbBCTBK7VnZBQr7Y70mdCrc7/QLG6/M6PnZ5I6C4JXGp+EyrOfPucyiX8vyUTUhujPL2CqNmlrmDryaPAXKTWb2CFCTlGRI3BfZk1UWjkcMVxGGQ1+TJO3UOsde7NCtgCpROUC9nXsfRwqZ4avdiUlavprwq9GI2aG9XnBlBsljKsEM5lXM/PhFu7HVTINI7d6l1yNf4kqdNF/4FSsr1gLpxc6y69oLyJiNhveaXSOXcL7qrHFdc7VSVUUkb+UjAupFxx8Xr10n7xaJk0LtxNqc/f6frKW+f34vSVPi+FDuNSiytYZestkELaNdkHsbjBOr5yaGOTikqyuGmBuJA1HT85G95mgnaUtEvoiOCy43rjvxMYTzG/k0BcZj6JFRy4T7OS0DvQJbc/541i/tNW3tiIDGXEFLcE4UKLeAqr4rEFfY0agEw1WvYD+mI8sY0OzU8XvsC6IwgX+ZjCate6qPV/3oZ+cbvLVIuFW7GF3rSZJmfuvSUIlzGVp4kM9jyK5q2njGzMfUu8wmykhRY6NNYIzcrcF4TLnhpbKmJUe0LaNZm2JHyEeYQkjMtAnzNJodJNAbimnHz4xrEq7UPFew4WqjyrqJdq2vy94ly2VIRJAbhWY6+hfzJ/gJupylMILlgFgL4l1OXDjvUb53IkrIfvSZyL7keTl5YyB4/5DOzOicXnrthU2dQVL6yKm+lSz+WEtjclzjWRtM7ZdEzn7V8cil65Y9liu/kG9FQtqjyljadc/INKGHEuPIrkXeYzEKJFGwvHK6owU3UM5gqbEFFpV81PjArPEuZCy1HIuyNsrlaosW5fqv4QHhfn6jKbvzx7Jr6UONdmuEIJmDt4DxsavGxTHrlN1s27nAXt0huoWThatu/blokpema/CXORemiFa9oOOm+OqZHxaqhSxYkXdp9AVGWzLqMgZBmAvFxvlkRyEVtPwlyjmJfFT3TDXLqeWWhVMm+pl4Ts21Wzaid5eOFBdSfIE2o/xzkKc/nD7Bpb9+IOtvIJ5gGiu0GMChG/jKdW1p5bbV6f0WnCXF+D2StgQQQ5JgHdrUVXQfOjXYgdihuJbrfYyY+rhLneB+WE39zazF3eEuiFTXG25Q220zsJYSd/lW2NolxUueTi2UyEKcWHrDW46pMSPl2R/FaGsSPbqnKNUZSLpJcNy5qeoVmUGhiZtK0iCnl4Sw6PVT5EsipFgVzJRau8mjQzmjtzw+TFJMYm17o8O/18tKAjfJNpi6Jc+HKR4tgnVD36Rqb5FfGCGfr5+Ga6t5GYoRLlGkS9QTN5WceAUQ+zhozHwPQn5TduKg9MEhezuVf35Eo0va2XGcfGt8E20kxREhd3EatlGVUOp9P4FrHx0/ob548s5yGHy1spfIXSRLXLNMkCp+I+Q7nv4AcKZGV05HDFzfBCux1V1Xbj2OTFg3gyvXhb0HovKFeblu5/zVbTS0FWpnRl81SbQoo7JxympB/kzM9y5i+WACC8d3TPdcNoyd7yR6gCp1r9LtdFvFGSy/XzZ/NMU6xoT09+9RwHXfSN7IMo9FTEoccRe4clWDBVSfH1wvH865CrLfzS4vqNspapmcDo4k/YyvD1ctZfnIv9g1seV4k/ijQuFICL9CBcft+JM6664fI+jytE+i1cCab9ar2NEQ37y515u9PYwFd2aB9RJmFyFs9H9Sewzm/k5/W8Dag3jyV4RGEu+t1rSevnveV5xL8AChJ1CRVS4nnRXc+Ps+gHO2FvSv0Sx2o8x6/WVfYsLWoM0HaysxnSBYRLfwMHU4D9lPzckNBgFUX7sxkO0x/35LmsFOx0ZBbuOQD7KcV5FeJYLMzt1TmNstw3FWYp8lcrkhZVS+aCdzQB+3rz8wDzfLbB0nvQT7icmnZ5eorpnkeZWgl1iZL2Yfm6svca2T+MFRh9L0FsPi+Gv3getqs44VoOYjqqPIpV2Zefj/iGhv4NDBIBXP22j+zm5eHuMocEfEejAo4wSP2Gf557o+EW/3Bb4gbYYWBzdM1+F5jXhnCp5xAx9gev+Y/nNpz9oLbNZNm5CNZhoPqocy7AGa4tbldpD7sstfp9RufNDOKlINcBqmebn5b+7tBxDPL3d+RV9buNKUV8F1B554Usv3fO91z4xfYdLkTXP0sDaHpVrNebzZr9Ms+IaxuISwRx4fIY+OjF8NtFIgsVXZuxPFubxAshmSlYHax5CqXy4VaqKXhBAC8c47O6VgMsEVa3fA45oiEXuVqBfp8LbfgfHUCOVFY99mjJhFSxlWWPa5aJ76fDuOj62Jxw9JR7x4we4Jopwq4DeC5gd+yU+DB87TKD/yMueuSK/4g2DniO43CcwZzRY9BOmOu8yhG2RCAXPc5gYy7lTeicdsvVXgjWKBEEg567OYaIzm70GCLk6Xlqg5j77lSpvhYbYkCuUxgYj4tAsdCGSpeyoVgli816mxViYSKU69j2cPwa+RCZwXrfTxMtElVwboba4XECq8bmwjP2P9Zczs45mKuLEEfxxmVi53ENA2hByeIaxYeTFcAPCJyJaiWJayqlfvUw300BYqe+oFyd33AnauLFuEaZEjFJ8vOj/IbCSs5FuCoZu5XSuKY28ekj1yGMFP9unUOnLqbQpxpDhPy8+w5ozlnQc9ntwnLCy9+al2/N197/4DfQhrtDdzKIm4qjNDeOav+lvN6T3l7KxAzjIlvelmDyOx7HvXFezC22zWBsrw49GZuwCpTL58sUb/rqO9pP+Wp6XO4O+FicTBbX7tDS5FS0gbgo5SNluqKJH+jtbCsOEnV1QY/eiytdBr7qiwvEZeWsIdX0SKfdFpgblFtkjNHVK1fvTRv1TwXhaieo+MqFDLjw3DivbVsl0yfZqD95VeLESk5AoH0i5hh6NTaXovO94Zs3nYC5m1hSu9Cr9LgAXCbbWuhO1kwJ3XfYFI8vTNSgW5VcgHoAdgNKvAN6L/I1urz441fvIzIbLD1X4G0w04H/kOIQhetga9fJDCkXxlMzuQj8pUS+olxoj1fSTqNhI+8NMw14ZSqXeN2XhA8/P0zd9DzjgjYzPvBw4r/5/yDcF7J31TE+KVSlLss9qF3/Cxe70TjpHEjl7/OyyJaQp/0/XI0vwmt+aNaxijTLPuaQZzVcFP03In5deTMvrYt9UoAatlD28/9Jy0WdO8Uyy6MS9Jz9X6a8ukbl7uFwAAAAAElFTkSuQmCC" alt="logo" width="50">HERMES</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="https://www.w3schools.com/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Welcome, <strong>NAME</strong></span><br>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Dashboard</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-eye fa-fw"></i> Courses</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Study Material</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Doubts</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+  </header>
+
+  <div class="w3-row-padding w3-margin-bottom">
+  
+  <div class="w3-container">
+    <h5>Experts</h5>
+    <div class="w3-row">
+      <div class="w3-col m2 text-center">
+        <img class="w3-circle" src="https://www.w3schools.com/w3images/avatar3.png" style="width:96px;height:96px">
+      </div>
+      <div class="w3-col m10 w3-container">
+        <h4>John </h4>
+        <p>UNIVERSITY DISTINGUISHED PROFESSOR<br>
+           Ph.D., Stanford University</p><br>
+      </div>
+    </div>
+
+    <div class="w3-row">
+      <div class="w3-col m2 text-center">
+        <img class="w3-circle" src="https://www.w3schools.com/w3images/avatar1.png" style="width:96px;height:96px">
+      </div>
+      <div class="w3-col m10 w3-container">
+        <h4>Bob </h4>
+        <p>ASSOCIATE PROFESSOR<br>
+         Ph.D., University of Texas at Austin</p>
+        <br>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+  <!-- Footer -->
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-d98c"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1"> &nbsp;©20XX<span class="u-file-icon u-icon u-icon-1">HERMES.All Rights Reserved.
+        </p>
+      </div></footer>
+
+
+  <!-- End page content -->
+</div>
+</body>
+</html>
