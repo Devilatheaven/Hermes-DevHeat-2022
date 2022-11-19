@@ -14,5 +14,6 @@ urlpatterns = [
     path('tregister',views.tregister,name='tregister'),
     path('tlogin',views.tlogin,name='tlogin'),
     path('student_quiz',views.student_quiz,name='student_quiz'),
-    path('quiz_questions',views.quiz_questions,name='quiz_questions')
+    path('quiz_questions',views.quiz_questions,name='quiz_questions'),
+    path('student_doubt',views.student_doubt,name='student_doubt')
 ]

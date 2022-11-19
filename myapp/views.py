@@ -29,8 +29,10 @@ def user(request):
         return render(request,'login.html')
     
 def student_quiz(request):
-    return render(request,'student.quiz.html')
+    return render(request,'student_quiz.html')
 
+def student_doubt(request):
+    return render(request,'student_doubt.html')
 def quiz_questions(request):
     return render(request,'student_quiz1.html')
 
