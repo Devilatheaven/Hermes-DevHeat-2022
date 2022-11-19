@@ -1,63 +1,104 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>HERMES</title>
-
-        <style>
-            hr.new{
-                border-top: 1px dotted black;
-                align-items: center;
-                border: width 90%;
-            }
-            #myBtn:hover {
-                background-color: #555;
-            }
-            #logo{
-                width:4%;
-                height:4%;
-            }
-            
-        </style>
-        <script>
-            let mybutton = document.getElementById("myBtn");
-            window.onscroll = function() {scrollFunction()};
-            function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                 mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-            }
-            function topFunction() {
-                document.body.scrollTop = 0; 
-                document.documentElement.scrollTop = 0; 
-            }
-        </script>
-    </head>
-    <body>
-        <div id="head">
-            <h1><img id="logo" src="data:image/png;base64,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" />
-            HERMES</h1>
-            <button>About</button>
-            <a href="{% url 'register' %}">register</a>
-            <a href="{% url 'login' %}">login</a>
-            <button>contact us</button>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="​Learn Anything, On Your Schedule">
+    <meta name="description" content="">
+    <title>Home</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="Home.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.21.12, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/default-logo.png"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-b13b"><div class="u-clearfix u-sheet u-sheet-1">
+        <a href="" class="u-image  u-image-1">
+          <img src="" class="">
+        </a>
+        <img class="u-image u-image-default u-preserve-proportions u-image-2" src="images/WhatsAppImage2022-11-18at23.23.11.jpg" alt="" data-image-width="213" data-image-height="130">
+        <p class="u-text u-text-default u-text-1">HERMES</p>
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px;">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="About.html" style="padding: 10px 20px;">About</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contact.html" style="padding: 10px 20px;">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" style="padding: 10px 20px;">Signup</a>
+</li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html">About</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link">Signup</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+      </div></header>
+    <section class="u-align-center u-clearfix u-valign-top-sm u-valign-top-xs u-section-1" id="carousel_43d4">
+      <div class="u-expanded-width u-grey-10 u-shape u-shape-rectangle u-shape-1"></div>
+      <h5 class="u-custom-font u-font-montserrat u-text u-text-1">
+        <span style="font-weight: 700;"> HERMES</span>
+      </h5>
+      <h1 class="u-text u-text-2"> Learn Anything, On Your Schedule</h1>
+      <div class="u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+          <div class="u-container-style u-list-item u-repeater-item u-white u-list-item-1">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+              <img alt="" class="u-bottom-left-radius-20 u-expanded-width u-image u-image-round u-top-right-radius-20 u-image-1" data-image-width="800" data-image-height="800" src="images/bn.jpg">
+              <h3 class="u-text u-text-default u-text-3">Build Skills</h3>
+              <p class="u-text u-text-default u-text-4">&nbsp;1. Set your career goals<br>2. Get a mentor<br>3. Read books<br>4. Join a training course<br>5. Practice regularly&nbsp;
+              </p>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item u-white u-list-item-2">
+            <div class="u-container-layout u-similar-container u-container-layout-2">
+              <img alt="" class="u-bottom-left-radius-20 u-expanded-width u-image u-image-round u-top-right-radius-20 u-image-2" data-image-width="1200" data-image-height="1002" src="images/kj.jpg">
+              <h3 class="u-text u-text-default u-text-5">Free Classes</h3>
+              <p class="u-text u-text-default u-text-6">Free classes to learn subject</p>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item u-white u-list-item-3">
+            <div class="u-container-layout u-similar-container u-container-layout-3">
+              <img alt="" class="u-bottom-left-radius-20 u-expanded-width u-image u-image-round u-top-right-radius-20 u-image-3" data-image-width="1080" data-image-height="1080" src="images/nn.jpg">
+              <h3 class="u-text u-text-default u-text-7"> Methodology</h3>
+              <p class="u-text u-text-default u-text-8">Easy methods to understand hard concepts.</p>
+            </div>
+          </div>
         </div>
-        <div id="upbody"></div>
-        <div id="middlebody"></div>
-        <div id="end body"></div>
-        <footer id="foot">
-            <hr>
-            <h1><img id="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANUAAAB4CAMAAABSHEeBAAAAk1BMVEUWPjX///8RPDMyUEgnSEAdQzoAMygAMCUALSEANSsAKBv29/cAJhj5+voAAAAAKh4AHw4AGADj5uUAFQAAGwYAEQDR1tUIOS/u8PDZ3dwADAAmQTi+xMKrs7Gyubeiq6k3Rz+Fk49LX1mYo6Becm3HzMtBW1RWZ2J0gn6CioZre3c9UUqQlpJkb2olOzFHV1EUMyi23lUVAAAK1UlEQVR4nM2ciXqiMBCAISgQQUWqBARBQASvuu//dEsCVkS8MrF2vv22hxbym8yZCVIPSb8hRBsQJTkUaZh5tmHIsjw0XM8Jo80hV9BAIyJv1pd+gQphc9bbLDKPwlzL0M7CeD03sbCRvJ8KadjPF3Y30FkMd7H6xpqYwbybClvKJnQfEJ3EDTeKJWIpvpUKaaMksJ9EqsQOlTl8Jb6Riox38WtINdhWGQPH9DYqYikRDxMVLyUmaFRvoiLabvHIPtwTN/2GDOs9VINdNAQwUQlMwP3fQYVH+2et3m1ZqYARiKciegFnkr0ZZAzCqXQ/hDPJ8gYyVaKpiLYVMFGy7MBGJZYK+wsRTLK8H4PGIZRq3Of1UG3RYYMSSIX0jSAmOYZNlUAq9CVo9ZU+WPkrERORAlFQcgQygAKpsO8Ig3ITaDYiiEoklBxY0OGIoVKPoowfFQmcOAqhwj1PIFQGniohVKT31PIbGrYTxdtkt2SSbONFZhvXsf0B/wUqNH4MNfSC/UqaT01dJagSouoDa07yfeBcZGKZgMKFAKrJw3DWiXNF19WuGyGsj3v5Jju/udCA45FEUOnRXSLDiwcTjZxvggiTxl3LaZtOC6cKi+0RbDhMwFTa4V7WO1xstVNppVx0GkXorUtRpMF8YpW0pxc1M08pVwH1wFSgVATdyTzcdKmqp1FjaZnEuuRnRiWu64RxsvR/bo81v3AdX4T7BFKhf7fjJDeSzJPmI2WzcIbycCT5l07AS/OzdUC6thZSbwdSqdubUOFRZyNE2PpCJGdTas+bVMPwkO+Ui0gWidlEgFGhwS0mbzdl1yVjpcjcUn0YjP2F/FMUYhcjE1MzL4TjUmBU1i37l+LKlRIlKnHcFbayE1Wth3tfF4TQISAqnHebCmPN9jaQKpmVL9tr45TN4AQt2Z8YW2jR+a6AqNRu/xv4zPDpymZAEmb3A4QT+tWpqYwDMNl9IBAqtOyECv9RlSejwpYTrDIb6fpoxqimaEnDo2IgEKFDIFRWZ0qfssI/WdPg0CE4YUFeQmbUSmQWWpaTt3gzFIQKjbu0Kq0UpnbOW2yxyYoGTMMCi84vPNd9JAAqraukxKAQRjhmP9oW2bGvM7X4oQrhCdQDAVCp2TVURAt5REqXZMCMnrwZM5NiKPhAVc5EJaTy7qkCUKGOrN4boCqKCnVkMmhPUg8Go9vZNZUhIiq/L/xU6vUCtOlWGlKpnViY6Jslk5E2pZoVjElGqcix/E8sQofwU5lXce1wS/0UrpxYPMA75pp83KNzplBzkepICVbwDP6R8FONrpWK
-                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
-                n6GSkPpdnR6MlVWRHkGb+JTqz8jY2melYmnFNj/GOuBCfWmt/CHpK9vQJkmaprBh/Qeh68T1vOLg/QAAAABJRU5ErkJggg==" />HERMES</h1>
-            <a href="">Contact Information</a>
-            <a href="">Privacy Statement</a>
-            <hr id="new">
-            &copy;20xx HERMES.All Rights Reserved.
-            <button onclick="topFunction()" id="myBtn" title="Go to top">&uarr;</button>
-        </footer>
-    </body>
-</html>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-d98c"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1"> &nbsp;©20XX<span class="u-file-icon u-icon u-icon-1"><img src="images/WhatsAppImage2022-11-18at23.23.11.jpg" alt=""></span>HERMES.All Rights Reserved.
+        </p>
+      </div></footer>
+
+  
+</body></html>
