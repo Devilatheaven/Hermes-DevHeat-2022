@@ -20,7 +20,7 @@ def user(request):
     if user_logged == 1:
         return render(request,'user.html')
     else:
-        return render(request,'index.html')
+        return render(request,'login.html')
     
 def login(request):
     global user_logged
