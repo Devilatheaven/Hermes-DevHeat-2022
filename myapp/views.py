@@ -34,9 +34,8 @@ def student_quiz(request):
 def student_doubt(request):
     if request.method == "POST":
         username = request.POST['name']
-        email = request.POST['email']
         question = request.POST['question']
-        question_created = doubts.objects.create(username = username, email=email, question = question, answer="null")
+        question_created = doubts.objects.create( question = question, answer="null")
         question_created.save()
         return redirect('user')
     else:
