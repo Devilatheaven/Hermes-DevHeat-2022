@@ -31,6 +31,11 @@ def user(request):
 def student_quiz(request):
     return render(request,'student_quiz.html')
 
+
+def tdoubts(request):
+    unsolved_doubts = doubts.objects.all()
+    return render(request,'tdoubts.html',{'unsolved_doubts':unsolved_doubts})
+
 def student_doubt(request):
     if request.method == "POST":
         username = request.POST['name']

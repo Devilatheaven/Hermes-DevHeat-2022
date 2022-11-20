@@ -116,10 +116,12 @@ https://templatemo.com/tm-563-seo-dream
         </div>
         <section id="navbar2">    
             <div class="iconbar1 iconbar">
-                <p class="content1"><b>This is a doubt</b></p><br>
+                {% for doubts in unsolved_doubts %}
+                <p class="content1"><b>{{doubts.question}}</b></p><br>
                     <div class="button">
                         <button type="button"  onclick="window.location.href='test.html'" class="button1" id="button2">Submit</button>
                     </div>
+                {% endfor %}
             </div>
     </header>
 
